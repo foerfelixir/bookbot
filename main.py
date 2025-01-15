@@ -13,6 +13,14 @@ def return_word_counts(book_content) :
 
     return count
 
+def sort_on(dict):
+    return dict["num"]
+
+def sort_dictionaries(char_dict) :
+    sorted_dict={}
+    sorted_dict = char_dict
+    return sorted_dict
+
 def count_characters(book_content) :
     char_dictionaries = {}
     lowered_strings = book_content.lower().split()
@@ -22,7 +30,7 @@ def count_characters(book_content) :
                 char_dictionaries[character] += 1
             else :
                 char_dictionaries[character] = 1
-    return char_dictionaries
+    return sort_dictionaries(char_dictionaries)
 
 
 def main():
