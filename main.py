@@ -18,7 +18,10 @@ def count_characters(book_content) :
     lowered_strings = book_content.lower().split()
     for string in lowered_strings :
         for character in string :
-            char_dictionaries[character] += 1
+            if character in char_dictionaries:
+                char_dictionaries[character] += 1
+            else :
+                char_dictionaries[character] = 1
     return char_dictionaries
 
 
@@ -26,7 +29,7 @@ def main():
     status = 0
     path_to_book = "books/frankenstein.txt"
     #print(read_books(path_to_book))
-    count_characters("i like to read books")
+    print(count_characters(read_books(path_to_book)))
     print(f"total word count :{return_word_counts(read_books(path_to_book))}")
     return status
 
