@@ -1,3 +1,4 @@
+import sys
 from stats import get_num_words
 
 
@@ -21,17 +22,21 @@ def sort_on(dict):
 
 def main():
     status = 0
-    
-    path_to_book = "books/frankenstein.txt"
-    print(f"--- Begin report of {path_to_book} ---")
-    print(f"{return_word_counts(read_books(path_to_book))} words found in the document")
-    print("")
+    if len(sys.argv) < 2:
+        print("Usage: python main.py <path_to_book>")
+        return 1
+    path_to_book = sys.argv[1]
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {path_to_book}...")
+    print("----------- Word Count ----------")
+    print(f"Found {return_word_counts(read_books(path_to_book))} total words")
+    print("--------- Character Count -------")
     
     characters_dict = get_num_words(read_books(path_to_book))
     for character, quantity in characters_dict :
-        print(f"The '{character}' character was found {quantity} times")
+        print(f"{character}: {quantity}")
     
-    print("--- End report ---")
+    print("============= END ===============")
     return status
 
 main()
